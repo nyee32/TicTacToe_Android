@@ -1,5 +1,6 @@
 package com.example.nathan.tictacktoe_android;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,6 +13,9 @@ import android.widget.Button;
 
 public class Game extends AppCompatActivity {
     private playerTurn turn = playerTurn.turnO;
+    private GameBoard gb = new GameBoard();
+    private int count = 0;
+    public final static String WINNER_MSG = "com.example.nathan.tictacktoe_android.winner_msg";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,13 +49,39 @@ public class Game extends AppCompatActivity {
 
     public void setText(View view) {
         Button piece = (Button) view;
+        piece.setClickable(false);
+        playerTurn winner;
 
+        count++;
         if (turn == playerTurn.turnX) {
             piece.setText("X");
             turn = playerTurn.turnO;
+            gb.addMark(piece.getId(), playerTurn.turnX);
         } else {
             piece.setText("O");
             turn = playerTurn.turnX;
+            gb.addMark(piece.getId(), playerTurn.turnO);
         }
+
+        if (gb.checkForWin() == playerTurn.turnO) {
+            winnerScreen(playerTurn.turnO);
+            System.out.println("Player O Wins!");
+        } else if (gb.checkForWin() == playerTurn.turnX) {
+            winnerScreen(playerTurn.turnX);
+            System.out.println("Player X Wins!");
+        }
+        gb.printBoard();
+    }
+
+    private void winnerScreen(playerTurn winner) {
+        Intent in = new Intent(this, winnerActivity.class);
+        String player = "";
+        if (winner == playerTurn.turnO) {
+            player = "O";
+        } else {
+            player = "X";
+        }
+        in.putExtra(WINNER_MSG, player);
+        startActivity(in);
     }
 }
