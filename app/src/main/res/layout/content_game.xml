@@ -42,7 +42,7 @@
                 android:layout_height="100dp"
                 android:height="100dp"
                 android:text=""
-                android:id="@+id/TopMiddle"
+                android:id="@+id/topMiddle"
                 android:layout_column="3"
                 android:onClick="setText" />
 
@@ -50,7 +50,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                  android:text=""
-                android:id="@+id/TopRight"
+                android:id="@+id/topRight"
                 android:layout_column="4"
                 android:onClick="setText" />
         </TableRow>
@@ -64,7 +64,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:text=""
-                android:id="@+id/MiddleLeft"
+                android:id="@+id/middleLeft"
                 android:layout_column="2"
                 android:onClick="setText" />
 
@@ -72,7 +72,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:text=""
-                android:id="@+id/Middle"
+                android:id="@+id/middle"
                 android:layout_column="3"
                 android:onClick="setText" />
 
@@ -80,7 +80,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:text=""
-                android:id="@+id/MiddleRight"
+                android:id="@+id/middleRight"
                 android:layout_column="4"
                 android:onClick="setText" />
         </TableRow>
@@ -94,7 +94,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:text=""
-                android:id="@+id/BottomLeft"
+                android:id="@+id/bottomLeft"
                 android:layout_column="2"
                 android:onClick="setText" />
 
@@ -102,7 +102,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:text=""
-                android:id="@+id/BottomMiddle"
+                android:id="@+id/bottomMiddle"
                 android:layout_column="3"
                 android:onClick="setText" />
 
@@ -110,7 +110,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:text=""
-                android:id="@+id/BottomRight"
+                android:id="@+id/bottomRight"
                 android:layout_column="4"
                 android:onClick="setText" />
         </TableRow>
