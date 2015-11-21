@@ -22,14 +22,14 @@ public class winnerActivity extends AppCompatActivity {
 
     private void getWinner() {
         String labelStr;
-        setContentView(R.layout.activity_winner);
         Intent in = getIntent();
-
         labelStr = in.getStringExtra(Game.WINNER_MSG);
         TextView winnerText = (TextView) findViewById(R.id.winnerMsg);
 
         winnerText.setTextSize(30);
         winnerText.setText("Congratulations\nplayer " + labelStr + " won!");
     }
+
+
 
 }

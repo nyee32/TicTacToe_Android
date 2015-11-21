@@ -73,6 +73,12 @@ public class Game extends AppCompatActivity {
         gb.printBoard();
     }
 
+    public void restart(View view) {
+        //TODO
+        //some type of reset function here
+        finish();
+    }
+
     private void winnerScreen(playerTurn winner) {
         Intent in = new Intent(this, winnerActivity.class);
         String player = "";
