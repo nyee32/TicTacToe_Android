@@ -10,11 +10,15 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class Game extends AppCompatActivity {
     private playerTurn turn = playerTurn.turnO;
     private GameBoard gb = new GameBoard();
     private int count = 0;
+    private ArrayList<Button> setPiece = new ArrayList<Button>();
     public final static String WINNER_MSG = "com.example.nathan.tictacktoe_android.winner_msg";
 
     @Override
@@ -23,6 +27,7 @@ public class Game extends AppCompatActivity {
         setContentView(R.layout.activity_game);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        System.out.println("start Activity");
     }
 
     @Override
@@ -51,6 +56,9 @@ public class Game extends AppCompatActivity {
         Button piece = (Button) view;
         piece.setClickable(false);
         playerTurn winner;
+        boolean ifWin = false;
+
+        setPiece.add(piece);
 
         count++;
         if (turn == playerTurn.turnX) {
@@ -66,17 +74,44 @@ public class Game extends AppCompatActivity {
         if (gb.checkForWin() == playerTurn.turnO) {
             winnerScreen(playerTurn.turnO);
             System.out.println("Player O Wins!");
+            ifWin = true;
         } else if (gb.checkForWin() == playerTurn.turnX) {
             winnerScreen(playerTurn.turnX);
             System.out.println("Player X Wins!");
+            ifWin = true;
         }
         gb.printBoard();
+        System.out.println("count = " + count);
+        if (count == 9 && !ifWin) {
+            ((TextView)findViewById(R.id.catTxt)).setText("TIE GAME");
+            ((Button)findViewById(R.id.catRst)).setVisibility(View.VISIBLE);
+            System.out.println("Cats Game");
+        }
     }
 
-    public void restart(View view) {
-        //TODO
-        //some type of reset function here
-        finish();
+    public void catRst(View View) {
+        clearBoard();
+        ((TextView)findViewById(R.id.catTxt)).setText("");
+        ((Button)findViewById(R.id.catRst)).setVisibility(View.INVISIBLE);
+    }
+
+    public void clearBoard() {
+        // Method that clears the board
+        System.out.println("Clearing beard");
+        gb.resetBoard();
+        count = 0;
+        for (Button btn : setPiece) {
+            btn.setText("");
+            btn.setClickable(true);
+        }
+
+    }
+
+    @Override
+    public void onRestart() {
+        super.onRestart();
+        System.out.println("Restarting Game");
+        clearBoard();
     }
 
     private void winnerScreen(playerTurn winner) {
@@ -88,6 +123,7 @@ public class Game extends AppCompatActivity {
             player = "X";
         }
         in.putExtra(WINNER_MSG, player);
+        in.putExtra("gmBoard", gb);
         startActivity(in);
     }
 }

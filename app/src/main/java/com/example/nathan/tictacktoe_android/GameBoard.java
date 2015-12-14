@@ -1,10 +1,12 @@
 package com.example.nathan.tictacktoe_android;
 
+import java.io.Serializable;
+
 /**
  * back end code for the game
  * Created by Nathan on 11/5/2015.
  */
-public class GameBoard {
+public class GameBoard implements Serializable{
     private int[][] board = new int[3][3];
     private int count;
 
@@ -166,7 +168,7 @@ public class GameBoard {
     private playerTurn checkWinCol() {
         int X = 0;
         int O = 0;
-        System.out.println("Cehcking Column");
+        System.out.println("Checking Column");
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (board[j][i] == 1) {
@@ -203,5 +205,11 @@ public class GameBoard {
             }
             System.out.print("\n");
         }
+    }
+
+    public void resetBoard() {
+        board = new int[3][3];
+
+
     }
 }

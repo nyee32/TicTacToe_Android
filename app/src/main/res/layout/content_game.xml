@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
 
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentStart="true"
+        android:id="@+id/tableLayout">
 
         <TableRow
             android:layout_width="match_parent"
@@ -121,4 +122,28 @@
 
         </TableRow>
     </TableLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/resetBtn"
+        android:id="@+id/catRst"
+        android:enabled="true"
+        android:visibility="invisible"
+        android:onClick="catRst"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="64dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/catTxt"
+        android:layout_above="@+id/catRst"
+        android:layout_alignEnd="@+id/tableLayout"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tableLayout" />
+
 </RelativeLayout>

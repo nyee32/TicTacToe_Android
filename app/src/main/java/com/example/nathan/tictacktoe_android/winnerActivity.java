@@ -1,5 +1,6 @@
 package com.example.nathan.tictacktoe_android;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -30,6 +31,14 @@ public class winnerActivity extends AppCompatActivity {
         winnerText.setText("Congratulations\nplayer " + labelStr + " won!");
     }
 
-
+    public void restart(View view) {
+        //TODO
+        //some type of reset function here
+//        Intent gb = getIntent();
+//        GameBoard myGb = (GameBoard)gb.getSerializableExtra("gmBoard");
+//        myGb.resetBoard();
+        System.out.println("User pressed the restart button");
+        finish();
+    }
 
 }
